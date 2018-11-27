@@ -89,8 +89,8 @@ public class VBOFactory {
                     verticeAttributes.put((float)Math.random());
                 numMissingUV++;
             } else {
-                verticeAttributes.put(vertex.t.u);
-                verticeAttributes.put(vertex.t.v);
+                verticeAttributes.put(vertex.t.x);
+                verticeAttributes.put(vertex.t.y);
             }
         }
         verticeAttributes.flip();
