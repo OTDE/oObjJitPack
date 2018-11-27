@@ -10,6 +10,9 @@ package com.owens.oobjloader.builder;
 // at http://unlicense.org/ .  See the file UNLICENSE in the repo.
 
 import java.util.*;
+
+import org.joml.Vector3f;
+
 import java.text.*;
 import java.io.*;
 import java.io.IOException;
@@ -26,16 +29,16 @@ public class Face {
     public void add(FaceVertex vertex) {
         vertices.add(vertex);
     }
-    public VertexNormal faceNormal = new VertexNormal(0, 0, 0);
+    public Vector3f faceNormal = new Vector3f(0, 0, 0);
 
     // @TODO: This code assumes the face is a triangle.  
     public void calculateTriangleNormal() {
         float[] edge1 = new float[3];
         float[] edge2 = new float[3];
         float[] normal = new float[3];
-        VertexGeometric v1 = vertices.get(0).v;
-        VertexGeometric v2 = vertices.get(1).v;
-        VertexGeometric v3 = vertices.get(2).v;
+        Vector3f v1 = vertices.get(0).v;
+        Vector3f v2 = vertices.get(1).v;
+        Vector3f v3 = vertices.get(2).v;
         float[] p1 = {v1.x, v1.y, v1.z};
         float[] p2 = {v2.x, v2.y, v2.z};
         float[] p3 = {v3.x, v3.y, v3.z};
