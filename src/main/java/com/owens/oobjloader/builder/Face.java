@@ -59,8 +59,8 @@ public class Face {
         faceNormal.y = normal[1];
         faceNormal.z = normal[2];
     }
-    
-    public String toString() { 
+
+	public String toString() { 
         String result = "\tvertices: "+vertices.size()+" :\n";
         for(FaceVertex f : vertices) {
             result += " \t\t( "+f.toString()+" )\n";
