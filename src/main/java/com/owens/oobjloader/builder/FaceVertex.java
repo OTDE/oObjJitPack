@@ -10,6 +10,10 @@ package com.owens.oobjloader.builder;
 // at http://unlicense.org/ .  See the file UNLICENSE in the repo.
 
 import java.util.*;
+
+import org.joml.Vector2f;
+import org.joml.Vector3f;
+
 import java.text.*;
 import java.io.*;
 import java.io.IOException;
@@ -17,9 +21,9 @@ import java.io.IOException;
 public class FaceVertex {
 
     int index = -1;
-    public VertexGeometric v = null;
-    public VertexTexture t = null;
-    public VertexNormal n = null;
+    public Vector3f v = null;
+    public Vector2f t = null;
+    public Vector3f n = null;
 
     public String toString() {
         return v + "|" + n + "|" + t;
