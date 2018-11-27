@@ -61,10 +61,10 @@ public class Parse {
     public final static String MTL_REFL_TYPE_CUBE_BACK = "cube_back";
     public final static String MTL_REFL_TYPE_CUBE_LEFT = "cube_left";
     public final static String MTL_REFL_TYPE_CUBE_RIGHT = "cube_right";
-    BuilderInterface builder = null;
+    Build builder = null;
     File objFile = null;
 
-    public Parse(BuilderInterface builder, String filename) throws FileNotFoundException, IOException {
+    public Parse(Build builder, String filename) throws FileNotFoundException, IOException {
         this.builder = builder;
         builder.setObjFilename(filename);
         parseObjFile(filename);
