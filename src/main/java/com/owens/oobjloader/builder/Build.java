@@ -9,6 +9,7 @@ package com.owens.oobjloader.builder;
 // In addition this code may also be used under the "unlicense" described
 // at http://unlicense.org/ .  See the file UNLICENSE in the repo.
 import com.owens.oobjloader.parser.BuilderInterface;
+import org.joml.*;
 
 import java.util.*;
 import static java.util.logging.Level.INFO;
@@ -21,9 +22,9 @@ public class Build implements BuilderInterface {
 
     public String objFilename = null;
     // these accumulate each type of vertex as they are parsed, so they can then be referenced via index.
-    public ArrayList<VertexGeometric> verticesG = new ArrayList<VertexGeometric>();
-    public ArrayList<VertexTexture> verticesT = new ArrayList<VertexTexture>();
-    public ArrayList<VertexNormal> verticesN = new ArrayList<VertexNormal>();
+    public ArrayList<Vector3f> verticesG = new ArrayList<Vector3f>();
+    public ArrayList<Vector2f> verticesT = new ArrayList<Vector2f>();
+    public ArrayList<Vector3f> verticesN = new ArrayList<Vector3f>();
     // we use this map to consolidate redundant face vertices.  Since a face is defined as a list of index 
     // triplets, each index referring to a vertex within ONE of the three arraylists verticesG,  verticesT
     // or verticesN, two faces might end up specifying the same combination.  Clearly (@TODO: really?) this 
@@ -58,17 +59,17 @@ public class Build implements BuilderInterface {
     }
 
     public void addVertexGeometric(float x, float y, float z) {
-        verticesG.add(new VertexGeometric(x, y, z));
+        verticesG.add(new Vector3f(x, y, z));
 //        log.log(INFO,"Added geometric vertex " + verticesG.size() + " = " + verticesG.get(verticesG.size() - 1));
     }
 
     public void addVertexTexture(float u, float v) {
-        verticesT.add(new VertexTexture(u, v));
+        verticesT.add(new Vector2f(u, v));
 //        log.log(INFO,"Added texture  vertex " + verticesT.size() + " = " + verticesT.get(verticesT.size() - 1));
     }
 
     public void addVertexNormal(float x, float y, float z) {
-        verticesN.add(new VertexNormal(x, y, z));
+        verticesN.add(new Vector3f(x, y, z));
     }
 
     public void addPoints(int[] values) {
