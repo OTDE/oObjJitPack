@@ -8,6 +8,10 @@ package com.owens.oobjloader.builder;
 // license.  (I generally don't care so I'll almost certainly say yes.)
 // In addition this code may also be used under the "unlicense" described
 // at http://unlicense.org/ .  See the file UNLICENSE in the repo.
+// Changes by Seth Chapman:
+// addFace accepts triangles only now.
+// if a higher-poly thing enters the fray, we use the fan method to make
+// triangles, and add each of those.
 import com.owens.oobjloader.parser.BuilderInterface;
 import org.joml.*;
 
@@ -173,8 +177,19 @@ public class Build implements BuilderInterface {
                 currentGroupFaceLists.get(loopi).add(face);
             }
         }
-
-        faces.add(face);
+        
+        // Custom triangulator (I'm gonna parse everything as triangles for my own purposes, thanks)
+        if(vertexIndices.length > 3) {
+        	for(int i = 1; i < vertexIndices.length - 1; i++) {
+        		Face temp = new Face();
+        		temp.add(face.vertices.get(0));
+        		temp.add(face.vertices.get(i));
+        		temp.add(face.vertices.get(i+1));
+        		faces.add(temp);
+        		// May be useful later, but is an artifact at this point
+        		faceTriCount++;
+        	}
+        } else { faces.add(face); }
 
         // collect some stats for laughs
         if (face.vertices.size() == 3) {
@@ -491,6 +506,6 @@ public class Build implements BuilderInterface {
     }
 
     public void doneParsingObj(String filename) {
-        log.log(INFO, "Loaded filename '" + filename + "' with " + verticesG.size() + " verticesG, " + verticesT.size() + " verticesT, " + verticesN.size() + " verticesN and " + faces.size() + " faces, of which " + faceTriCount + " triangles, " + faceQuadCount + " quads, and " + facePolyCount + " with more than 4 points, and faces with errors " + faceErrorCount);
+        log.log(INFO, "Loaded filename '" + filename + "' with " + verticesG.size() + " verticesG, " + verticesT.size() + " verticesT, " + verticesN.size() + " verticesN and " + faces.size() + "  triangles, and faces with errors " + faceErrorCount);
     }
 }
