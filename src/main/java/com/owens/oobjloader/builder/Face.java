@@ -11,6 +11,7 @@ package com.owens.oobjloader.builder;
 
 import java.util.*;
 
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 
 import java.text.*;
@@ -29,19 +30,19 @@ public class Face {
     public void add(FaceVertex vertex) {
         vertices.add(vertex);
     }
-    public Vector3f faceNormal = new Vector3f(0, 0, 0);
+    public Vector3d faceNormal = new Vector3d(0, 0, 0);
 
     // @TODO: This code assumes the face is a triangle.  
     public void calculateTriangleNormal() {
-        float[] edge1 = new float[3];
-        float[] edge2 = new float[3];
-        float[] normal = new float[3];
-        Vector3f v1 = vertices.get(0).v;
-        Vector3f v2 = vertices.get(1).v;
-        Vector3f v3 = vertices.get(2).v;
-        float[] p1 = {v1.x, v1.y, v1.z};
-        float[] p2 = {v2.x, v2.y, v2.z};
-        float[] p3 = {v3.x, v3.y, v3.z};
+        double[] edge1 = new double[3];
+        double[] edge2 = new double[3];
+        double[] normal = new double[3];
+        Vector3d v1 = vertices.get(0).v;
+        Vector3d v2 = vertices.get(1).v;
+        Vector3d v3 = vertices.get(2).v;
+        double[] p1 = {v1.x, v1.y, v1.z};
+        double[] p2 = {v2.x, v2.y, v2.z};
+        double[] p3 = {v3.x, v3.y, v3.z};
 
         edge1[0] = p2[0] - p1[0];
         edge1[1] = p2[1] - p1[1];

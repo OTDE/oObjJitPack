@@ -67,9 +67,9 @@ public class VBOFactory {
             log.log(SEVERE, "Unable to allocate verticeAttributes buffer of size " + (verticeAttributesCount * VBO.ATTR_SZ_FLOATS) + " floats.");
         }
         for (FaceVertex vertex : faceVertexList) {
-            verticeAttributes.put(vertex.v.x);
-            verticeAttributes.put(vertex.v.y);
-            verticeAttributes.put(vertex.v.z);
+            verticeAttributes.put((float) vertex.v.x);
+            verticeAttributes.put((float) vertex.v.y);
+            verticeAttributes.put((float) vertex.v.z);
             if (vertex.n == null) {
                 // @TODO: What's a reasonable default normal?  Maybe add code later to calculate normals if not present in .obj file.
                 verticeAttributes.put(1.0f);
@@ -77,9 +77,9 @@ public class VBOFactory {
                 verticeAttributes.put(1.0f);
                 numMIssingNormals++;
             } else {
-                verticeAttributes.put(vertex.n.x);
-                verticeAttributes.put(vertex.n.y);
-                verticeAttributes.put(vertex.n.z);
+                verticeAttributes.put((float) vertex.n.x);
+                verticeAttributes.put((float) vertex.n.y);
+                verticeAttributes.put((float) vertex.n.z);
             }
             // @TODO: What's a reasonable default texture coord?  
             if (vertex.t == null) {
@@ -89,8 +89,8 @@ public class VBOFactory {
                     verticeAttributes.put((float)Math.random());
                 numMissingUV++;
             } else {
-                verticeAttributes.put(vertex.t.x);
-                verticeAttributes.put(vertex.t.y);
+                verticeAttributes.put((float) vertex.t.x);
+                verticeAttributes.put((float) vertex.t.y);
             }
         }
         verticeAttributes.flip();
