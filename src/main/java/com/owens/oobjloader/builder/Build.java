@@ -186,7 +186,7 @@ public class Build implements BuilderInterface {
         }
         
         // Custom triangulator (I'm gonna parse everything as triangles for my own purposes, thanks)
-        if(vertexIndices.length > 3) {
+        if(face.vertices.size() > 3) {
         	for(int i = 1; i < face.vertices.size() - 1; i++) {
         		Face temp = new Face();
         		temp.add(face.vertices.get(0));
