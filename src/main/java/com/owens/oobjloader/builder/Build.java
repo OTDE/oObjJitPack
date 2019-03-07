@@ -191,7 +191,7 @@ public class Build implements BuilderInterface {
         		Face temp = new Face();
         		temp.add(face.vertices.get(0));
         		temp.add(face.vertices.get(i));
-        		temp.add(face.vertices.get(i+1));
+        		temp.add(face.vertices.get((i+1) % vertexIndices.length));
         		faces.add(temp);
         		// May be useful later, but is an artifact at this point
         		faceTriCount++;
