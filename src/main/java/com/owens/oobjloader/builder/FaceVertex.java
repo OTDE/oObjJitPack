@@ -11,7 +11,9 @@ package com.owens.oobjloader.builder;
 
 import java.util.*;
 
+import org.joml.Vector2d;
 import org.joml.Vector2f;
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 
 import java.text.*;
@@ -21,9 +23,9 @@ import java.io.IOException;
 public class FaceVertex {
 
     int index = -1;
-    public Vector3f v = null;
-    public Vector2f t = null;
-    public Vector3f n = null;
+    public Vector3d v = null;
+    public Vector2d t = null;
+    public Vector3d n = null;
 
     public String toString() {
         return v + "|" + n + "|" + t;

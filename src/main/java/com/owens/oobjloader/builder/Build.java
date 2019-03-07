@@ -26,9 +26,9 @@ public class Build implements BuilderInterface {
 
     public String objFilename = null;
     // these accumulate each type of vertex as they are parsed, so they can then be referenced via index.
-    public ArrayList<Vector3f> verticesG = new ArrayList<Vector3f>();
-    public ArrayList<Vector2f> verticesT = new ArrayList<Vector2f>();
-    public ArrayList<Vector3f> verticesN = new ArrayList<Vector3f>();
+    public ArrayList<Vector3d> verticesG = new ArrayList<Vector3d>();
+    public ArrayList<Vector2d> verticesT = new ArrayList<Vector2d>();
+    public ArrayList<Vector3d> verticesN = new ArrayList<Vector3d>();
     // we use this map to consolidate redundant face vertices.  Since a face is defined as a list of index 
     // triplets, each index referring to a vertex within ONE of the three arraylists verticesG,  verticesT
     // or verticesN, two faces might end up specifying the same combination.  Clearly (@TODO: really?) this 
@@ -54,8 +54,13 @@ public class Build implements BuilderInterface {
     public int faceQuadCount = 0;
     public int facePolyCount = 0;
     public int faceErrorCount = 0;
-
+    private Matrix4d translation = null;
+    
     public Build() {
+    }
+    
+    public void setTranslation(Matrix4d translation) {
+    	this.translation = translation;
     }
 
     public void setObjFilename(String filename) {
@@ -63,17 +68,19 @@ public class Build implements BuilderInterface {
     }
 
     public void addVertexGeometric(float x, float y, float z) {
-        verticesG.add(new Vector3f(x, y, z));
+    	Vector3d v = new Vector3d(x, y, z);
+    	v.mulPosition(this.translation);
+        verticesG.add(v);
 //        log.log(INFO,"Added geometric vertex " + verticesG.size() + " = " + verticesG.get(verticesG.size() - 1));
     }
 
     public void addVertexTexture(float u, float v) {
-        verticesT.add(new Vector2f(u, v));
+        verticesT.add(new Vector2d(u, v));
 //        log.log(INFO,"Added texture  vertex " + verticesT.size() + " = " + verticesT.get(verticesT.size() - 1));
     }
 
     public void addVertexNormal(float x, float y, float z) {
-        verticesN.add(new Vector3f(x, y, z));
+        verticesN.add(new Vector3d(x, y, z));
     }
 
     public void addPoints(int[] values) {
