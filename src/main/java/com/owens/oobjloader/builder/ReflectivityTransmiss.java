@@ -10,6 +10,9 @@ package com.owens.oobjloader.builder;
 // at http://unlicense.org/ .  See the file UNLICENSE in the repo.
 
 import java.util.*;
+
+import org.joml.Vector3d;
+
 import java.text.*;
 import java.io.*;
 import java.io.IOException;
@@ -21,7 +24,15 @@ public class ReflectivityTransmiss {
     public double rx;
     public double gy;
     public double bz;
+    public Vector3d coords;
 
     public ReflectivityTransmiss() {
+    	coords = null;
+    }
+    
+    public Vector3d getRGB() {
+    	if(coords == null)
+    		coords = new Vector3d(rx, gy, bz);
+    	return coords;
     }
 }
