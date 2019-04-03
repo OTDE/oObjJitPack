@@ -192,6 +192,7 @@ public class Build implements BuilderInterface {
         		temp.add(face.vertices.get(0));
         		temp.add(face.vertices.get(i));
         		temp.add(face.vertices.get((i+1) % face.vertices.size()));
+        		temp.material = currentMaterial; 
         		faces.add(temp);
         		// May be useful later, but is an artifact at this point
         		faceTriCount++;
