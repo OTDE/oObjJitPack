@@ -44,7 +44,7 @@ public class Build implements BuilderInterface {
     private ArrayList<String> currentGroups = new ArrayList<String>();
     private ArrayList<ArrayList<Face>> currentGroupFaceLists = new ArrayList<ArrayList<Face>>();
     public String objectName = null;
-    private Material currentMaterial = null;
+    public Material currentMaterial = null;
     private Material currentMap = null;
     public HashMap<String, Material> materialLib = new HashMap<String, Material>();
     private Material currentMaterialBeingParsed = null;
@@ -69,7 +69,8 @@ public class Build implements BuilderInterface {
 
     public void addVertexGeometric(float x, float y, float z) {
     	Vector3d v = new Vector3d(x, y, z);
-    	v.mulPosition(this.translation);
+    	if(this.translation != null) 
+    		v.mulPosition(this.translation);
         verticesG.add(v);
 //        log.log(INFO,"Added geometric vertex " + verticesG.size() + " = " + verticesG.get(verticesG.size() - 1));
     }
@@ -96,7 +97,6 @@ public class Build implements BuilderInterface {
 
         face.material = currentMaterial;
         face.map = currentMap;
-
         int loopi = 0;
         // @TODO: add better error checking - make sure values is not empty and that it is a multiple of 3
         while (loopi < vertexIndices.length) {
@@ -377,6 +377,7 @@ public class Build implements BuilderInterface {
     // >     material_name is the name of the material. If a material name is
     // >     not specified, a white material is used.
     public void setCurrentUseMaterial(String name) {
+    	System.out.println(name);
         currentMaterial = materialLib.get(name);
     }
 
@@ -496,6 +497,12 @@ public class Build implements BuilderInterface {
     public void setRefl(int type, String filename) {
         currentMaterialBeingParsed.reflType = type;
         currentMaterialBeingParsed.reflFilename = filename;
+    }
+    
+    public void testMaterialParsing() {
+    	for(Face f: this.faces) {
+    		System.out.println(f.material.kd.getRGB());
+    	}
     }
 
     public void doneParsingMaterial() {
