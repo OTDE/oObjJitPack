@@ -473,6 +473,10 @@ public class Build implements BuilderInterface {
     public void setNi(float opticalDensity) {
         currentMaterialBeingParsed.niOpticalDensity = opticalDensity;
     }
+    
+    public void setMirror(float mirrorValue) {
+    	currentMaterialBeingParsed.mirror = mirrorValue;
+    }
 
     public void setMapDecalDispBump(int type, String filename) {
         if (type == MTL_MAP_KA) {

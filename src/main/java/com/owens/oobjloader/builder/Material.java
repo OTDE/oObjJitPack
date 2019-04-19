@@ -21,6 +21,7 @@ public class Material {
     public ReflectivityTransmiss tf = new ReflectivityTransmiss();
     public int illumModel = 0;
     public boolean dHalo = false;
+    public double mirror = 0.0;
     public double dFactor = 0.0;
     public double nsExponent = 0.0;
     public double sharpnessValue = 0.0;

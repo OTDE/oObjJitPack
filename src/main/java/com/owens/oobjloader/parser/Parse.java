@@ -39,6 +39,7 @@ public class Parse {
     private final static String MTL_KD = "Kd";
     private final static String MTL_KS = "Ks";
     private final static String MTL_TF = "Tf";
+    private final static String MTL_MIRROR = "mirror";
     private final static String MTL_ILLUM = "illum";
     private final static String MTL_D = "d";
     private final static String MTL_D_DASHHALO = "-halo";
@@ -669,6 +670,8 @@ public class Parse {
                 processSharpness(line);
             } else if (line.startsWith(MTL_NI)) {
                 processNi(line);
+            } else if (line.startsWith(MTL_MIRROR)) {
+            	processMirror(line);
             } else if (line.startsWith(MTL_MAP_KA)) {
                 processMapDecalDispBump(MTL_MAP_KA, line);
             } else if (line.startsWith(MTL_MAP_KD)) {
@@ -800,6 +803,12 @@ public class Parse {
         line = line.substring(MTL_NI.length()).trim();
         float opticalDensity = Float.parseFloat(line);
         builder.setNi(opticalDensity);
+    }
+    
+    private void processMirror(String line) {
+    	line = line.substring(MTL_MIRROR.length()).trim();
+    	float mirror = Float.parseFloat(line);
+    	builder.setMirror(mirror);
     }
 
     // NOTE: From what I can tell, nobody ever implements these
