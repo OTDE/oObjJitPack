@@ -474,8 +474,18 @@ public class Build implements BuilderInterface {
         currentMaterialBeingParsed.niOpticalDensity = opticalDensity;
     }
     
+    // Methods used in the PLU CSCI Ray Tracer capstone project.
+    
     public void setMirror(float mirrorValue) {
     	currentMaterialBeingParsed.mirror = mirrorValue;
+    }
+    
+    public void setRefractionIndex(float index) {
+    	currentMaterialBeingParsed.refracIndex = index;
+    }
+    
+    public void setOpacity(float opacity) {
+    	currentMaterialBeingParsed.opacity = opacity;
     }
 
     public void setMapDecalDispBump(int type, String filename) {

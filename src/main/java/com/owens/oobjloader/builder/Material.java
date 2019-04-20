@@ -22,6 +22,8 @@ public class Material {
     public int illumModel = 0;
     public boolean dHalo = false;
     public double mirror = 0.0;
+    public double refracIndex = 0.0;
+    public double opacity = 0.0;
     public double dFactor = 0.0;
     public double nsExponent = 0.0;
     public double sharpnessValue = 0.0;

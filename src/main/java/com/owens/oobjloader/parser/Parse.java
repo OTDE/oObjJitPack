@@ -40,6 +40,8 @@ public class Parse {
     private final static String MTL_KS = "Ks";
     private final static String MTL_TF = "Tf";
     private final static String MTL_MIRROR = "mirror";
+    private final static String MTL_INDEX = "index";
+    private final static String MTL_OPACITY = "opacity";
     private final static String MTL_ILLUM = "illum";
     private final static String MTL_D = "d";
     private final static String MTL_D_DASHHALO = "-halo";
@@ -672,6 +674,10 @@ public class Parse {
                 processNi(line);
             } else if (line.startsWith(MTL_MIRROR)) {
             	processMirror(line);
+            } else if (line.startsWith(MTL_INDEX)) {
+            	processRefractionIndex(line);
+            } else if (line.startsWith(MTL_OPACITY)) {
+            	processOpacity(line);
             } else if (line.startsWith(MTL_MAP_KA)) {
                 processMapDecalDispBump(MTL_MAP_KA, line);
             } else if (line.startsWith(MTL_MAP_KD)) {
@@ -809,6 +815,18 @@ public class Parse {
     	line = line.substring(MTL_MIRROR.length()).trim();
     	float mirror = Float.parseFloat(line);
     	builder.setMirror(mirror);
+    }
+    
+    private void processRefractionIndex(String line) {
+    	line = line.substring(MTL_INDEX.length()).trim();
+    	float index = Float.parseFloat(line);
+    	builder.setRefractionIndex(index);
+    }
+    
+    private void processOpacity(String line) {
+    	line = line.substring(MTL_OPACITY.length()).trim();
+    	float opacity = Float.parseFloat(line);
+    	builder.setOpacity(opacity);
     }
 
     // NOTE: From what I can tell, nobody ever implements these
