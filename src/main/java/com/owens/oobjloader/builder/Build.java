@@ -83,7 +83,7 @@ public class Build implements BuilderInterface {
     public void addVertexNormal(float x, float y, float z) {
     	Vector3d v = new Vector3d(x, y, z);
     	if(this.translation != null)
-    		v.mulPosition(this.translation);
+    		v.mulDirection(this.translation);
         verticesN.add(v);
     }
 
