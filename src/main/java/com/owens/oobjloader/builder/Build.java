@@ -81,7 +81,10 @@ public class Build implements BuilderInterface {
     }
 
     public void addVertexNormal(float x, float y, float z) {
-        verticesN.add(new Vector3d(x, y, z));
+    	Vector3d v = new Vector3d(x, y, z);
+    	if(this.translation != null)
+    		v.mulPosition(this.translation);
+        verticesN.add(v);
     }
 
     public void addPoints(int[] values) {
