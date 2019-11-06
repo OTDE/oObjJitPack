@@ -17,6 +17,7 @@ Additionally, the face code doesn't treat every face as a triangle, like we
 are, so I modified the code to work exclusively with triangles.
 
 Cheers!
+
 Seth Chapman (OTDE)
 
-For a look at the original code base, you can go here: https://github.com/seanrowens/oObjLoader
+For a look at the original code base, you can go [here.](https://github.com/seanrowens/oObjLoader)
