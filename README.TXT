@@ -1,4 +1,4 @@
-Hi!
+# What is this?
 
 I've modified a java library by Sean R. Owens to work with a ray tracer
 that I'm building with Ethan Wiederspan for a capstone. I'm using JitPack
